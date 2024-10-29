@@ -40,11 +40,12 @@ const TopBar = ({ cartItems, onCheckout, hasActiveOrder }: TopBarProps) => {
             <SheetTrigger asChild>
               <Button 
                 size="icon" 
-                className="relative bg-white shadow-lg hover:bg-white/90 transition-colors"
+                variant="outline"
+                className="relative bg-primary hover:bg-primary/90 transition-colors"
               >
-                <ShoppingBag className="h-5 w-5" />
+                <ShoppingBag className="h-5 w-5 text-white" />
                 {cartItems.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-accent text-primary text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
                     {cartItems.length}
                   </span>
                 )}
@@ -119,10 +120,11 @@ const TopBar = ({ cartItems, onCheckout, hasActiveOrder }: TopBarProps) => {
           {hasActiveOrder && (
             <Button 
               size="icon"
-              className="bg-white shadow-lg hover:bg-white/90 transition-colors"
+              variant="outline"
+              className="bg-primary hover:bg-primary/90 transition-colors"
               onClick={() => setShowOrderStatus(true)}
             >
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="h-5 w-5 text-white" />
             </Button>
           )}
         </div>
