@@ -1,7 +1,6 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://www.clicktodrink.es/api/v1';
-const USE_MOCK = import.meta.env.VITE_USE_MOCK !== 'false'; // Cambiado para usar mock por defecto
+const USE_MOCK = import.meta.env.VITE_USE_MOCK !== 'false';
 
-// Mock data
 const mockEstablishment = {
   id: "123",
   name: "Bar Central",
@@ -62,28 +61,6 @@ const mockProducts = [
     price: 4.00,
     image: "https://images.unsplash.com/photo-1618885472179-5e474019f2a9",
     category: "cervezas",
-  },
-  {
-    id: "5",
-    name: "Nachos con Guacamole",
-    description: "Nachos crujientes con guacamole casero",
-    price: 8.00,
-    image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d",
-    category: "tapas",
-  },
-  {
-    id: "6",
-    name: "Patatas Bravas",
-    description: "Patatas fritas con salsa brava casera",
-    price: 6.50,
-    image: "https://images.unsplash.com/photo-1623259838743-9f1e884fba59",
-    category: "tapas",
-    variants: [
-      {
-        name: "Nivel de picante",
-        options: ["Suave", "Medio", "Picante"],
-      },
-    ],
   },
   {
     id: "7",

@@ -105,43 +105,42 @@ const Establishment = () => {
         hasActiveOrder={hasActiveOrder}
       />
       
-      <div className="pt-16">
+      <div className="pt-16 relative">
         <ImageCarousel images={establishment.images} />
-        
-        <div className="px-4 py-6">
-          <h1 className="font-heading font-bold text-2xl">{establishment.name}</h1>
-          <p className="text-gray-600 mt-1">{establishment.description}</p>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-10">
+          <h1 className="font-heading font-bold text-4xl mb-2">{establishment.name}</h1>
+          <p className="text-lg">{establishment.description}</p>
         </div>
-
-        <ProductTabs
-          products={products}
-          onCategoryChange={setSelectedCategory}
-        />
-
-        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {filteredProducts.map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              quantity={
-                cartItems
-                  .filter(item => item.product.id === product.id)
-                  .reduce((sum, item) => sum + item.quantity, 0)
-              }
-              onAdd={() => handleAddProduct(product)}
-              onRemove={() => handleRemoveProduct(product.id)}
-            />
-          ))}
-        </div>
-
-        {variantProduct && (
-          <VariantModal
-            variants={variantProduct.variants || []}
-            onClose={() => setVariantProduct(null)}
-            onConfirm={handleVariantConfirm}
-          />
-        )}
       </div>
+
+      <ProductTabs
+        products={products}
+        onCategoryChange={setSelectedCategory}
+      />
+
+      <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {filteredProducts.map(product => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            quantity={
+              cartItems
+                .filter(item => item.product.id === product.id)
+                .reduce((sum, item) => sum + item.quantity, 0)
+            }
+            onAdd={() => handleAddProduct(product)}
+            onRemove={() => handleRemoveProduct(product.id)}
+          />
+        ))}
+      </div>
+
+      {variantProduct && (
+        <VariantModal
+          variants={variantProduct.variants || []}
+          onClose={() => setVariantProduct(null)}
+          onConfirm={handleVariantConfirm}
+        />
+      )}
     </div>
   );
 };
