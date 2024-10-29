@@ -46,10 +46,9 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }: ProductCardProps) =
           ) : (
             <button
               onClick={onAdd}
-              className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors flex items-center gap-2"
+              className="p-1 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
             >
               <Plus className="h-4 w-4" />
-              <span>Añadir</span>
             </button>
           )}
           
