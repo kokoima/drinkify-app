@@ -1,5 +1,5 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://www.clicktodrink.es/api/v1';
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
+const USE_MOCK = import.meta.env.VITE_USE_MOCK !== 'false'; // Cambiado para usar mock por defecto
 
 // Mock data
 const mockEstablishment = {
