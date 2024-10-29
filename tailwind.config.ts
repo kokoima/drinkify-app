@@ -27,6 +27,8 @@ export default {
           DEFAULT: "#FCD34D",
           foreground: "#1E40AF",
         },
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
