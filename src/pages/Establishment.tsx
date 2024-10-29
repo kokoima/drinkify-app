@@ -106,9 +106,9 @@ const Establishment = () => {
       />
       
       <EstablishmentHeader 
-        images={establishment.images}
-        name={establishment.name}
-        description={establishment.description}
+        images={establishment?.images || []}
+        name={establishment?.name || ''}
+        description={establishment?.description || ''}
       />
 
       <div className="max-w-screen-xl mx-auto px-4">
@@ -117,20 +117,25 @@ const Establishment = () => {
           onCategoryChange={setSelectedCategory}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-6">
-          {filteredProducts.map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              quantity={
-                cartItems
-                  .filter(item => item.product.id === product.id)
-                  .reduce((sum, item) => sum + item.quantity, 0)
-              }
-              onAdd={() => handleAddProduct(product)}
-              onRemove={() => handleRemoveProduct(product.id)}
-            />
-          ))}
+        <div className="relative">
+          {/* Fondo degradado suave */}
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white rounded-xl" />
+          
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-6">
+            {filteredProducts.map(product => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                quantity={
+                  cartItems
+                    .filter(item => item.product.id === product.id)
+                    .reduce((sum, item) => sum + item.quantity, 0)
+                }
+                onAdd={() => handleAddProduct(product)}
+                onRemove={() => handleRemoveProduct(product.id)}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
