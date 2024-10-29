@@ -5,7 +5,7 @@ import api, { Product } from '@/services/api';
 import ImageCarousel from '@/components/ImageCarousel';
 import ProductTabs from '@/components/ProductTabs';
 import ProductCard from '@/components/ProductCard';
-import Cart from '@/components/Cart';
+import TopBar from '@/components/TopBar';
 import VariantModal from '@/components/VariantModal';
 
 interface CartItem {
@@ -19,6 +19,7 @@ const Establishment = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [variantProduct, setVariantProduct] = useState<Product | null>(null);
+  const [hasActiveOrder, setHasActiveOrder] = useState(false);
 
   const { data: establishment } = useQuery({
     queryKey: ['establishment', establishmentId],
@@ -89,53 +90,58 @@ const Establishment = () => {
     });
   };
 
+  const handleCheckout = () => {
+    setCartItems([]);
+    setHasActiveOrder(true);
+  };
+
   if (!establishment) return null;
 
   return (
     <div className="min-h-screen pb-32">
-      <ImageCarousel images={establishment.images} />
+      <TopBar 
+        cartItems={cartItems}
+        onCheckout={handleCheckout}
+        hasActiveOrder={hasActiveOrder}
+      />
       
-      <div className="px-4 py-6">
-        <h1 className="font-heading font-bold text-2xl">{establishment.name}</h1>
-        <p className="text-gray-600 mt-1">{establishment.description}</p>
-      </div>
+      <div className="pt-16">
+        <ImageCarousel images={establishment.images} />
+        
+        <div className="px-4 py-6">
+          <h1 className="font-heading font-bold text-2xl">{establishment.name}</h1>
+          <p className="text-gray-600 mt-1">{establishment.description}</p>
+        </div>
 
-      <ProductTabs
-        products={products}
-        onCategoryChange={setSelectedCategory}
-      />
-
-      <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {filteredProducts.map(product => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            quantity={
-              cartItems
-                .filter(item => item.product.id === product.id)
-                .reduce((sum, item) => sum + item.quantity, 0)
-            }
-            onAdd={() => handleAddProduct(product)}
-            onRemove={() => handleRemoveProduct(product.id)}
-          />
-        ))}
-      </div>
-
-      <Cart
-        items={cartItems}
-        onCheckout={() => {
-          // TODO: Implement checkout
-          console.log('Checkout with items:', cartItems);
-        }}
-      />
-
-      {variantProduct && (
-        <VariantModal
-          variants={variantProduct.variants || []}
-          onClose={() => setVariantProduct(null)}
-          onConfirm={handleVariantConfirm}
+        <ProductTabs
+          products={products}
+          onCategoryChange={setSelectedCategory}
         />
-      )}
+
+        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {filteredProducts.map(product => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              quantity={
+                cartItems
+                  .filter(item => item.product.id === product.id)
+                  .reduce((sum, item) => sum + item.quantity, 0)
+              }
+              onAdd={() => handleAddProduct(product)}
+              onRemove={() => handleRemoveProduct(product.id)}
+            />
+          ))}
+        </div>
+
+        {variantProduct && (
+          <VariantModal
+            variants={variantProduct.variants || []}
+            onClose={() => setVariantProduct(null)}
+            onConfirm={handleVariantConfirm}
+          />
+        )}
+      </div>
     </div>
   );
 };
