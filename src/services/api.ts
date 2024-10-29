@@ -27,7 +27,114 @@ const mockProducts = [
       },
     ],
   },
-  // ... más productos mock
+  {
+    id: "2",
+    name: "Margarita",
+    description: "Tequila, triple sec y lima",
+    price: 9.00,
+    image: "https://images.unsplash.com/photo-1556855810-ac404aa91e85",
+    category: "cocktails",
+    variants: [
+      {
+        name: "Tipo de tequila",
+        options: ["José Cuervo", "Patrón", "Don Julio"],
+      },
+    ],
+  },
+  {
+    id: "3",
+    name: "Cerveza Artesanal",
+    description: "IPA local de barril",
+    price: 5.50,
+    image: "https://images.unsplash.com/photo-1535958636474-b021ee887b13",
+    category: "cervezas",
+    variants: [
+      {
+        name: "Tamaño",
+        options: ["Caña", "Pinta", "Jarra"],
+      },
+    ],
+  },
+  {
+    id: "4",
+    name: "Heineken",
+    description: "Cerveza lager holandesa",
+    price: 4.00,
+    image: "https://images.unsplash.com/photo-1618885472179-5e474019f2a9",
+    category: "cervezas",
+  },
+  {
+    id: "5",
+    name: "Nachos con Guacamole",
+    description: "Nachos crujientes con guacamole casero",
+    price: 8.00,
+    image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d",
+    category: "tapas",
+  },
+  {
+    id: "6",
+    name: "Patatas Bravas",
+    description: "Patatas fritas con salsa brava casera",
+    price: 6.50,
+    image: "https://images.unsplash.com/photo-1623259838743-9f1e884fba59",
+    category: "tapas",
+    variants: [
+      {
+        name: "Nivel de picante",
+        options: ["Suave", "Medio", "Picante"],
+      },
+    ],
+  },
+  {
+    id: "7",
+    name: "Coca-Cola",
+    description: "Refresco de cola",
+    price: 3.00,
+    image: "https://images.unsplash.com/photo-1554866585-cd94860890b7",
+    category: "refrescos",
+    variants: [
+      {
+        name: "Tamaño",
+        options: ["Pequeña", "Mediana", "Grande"],
+      },
+    ],
+  },
+  {
+    id: "8",
+    name: "Agua Mineral",
+    description: "Agua mineral natural",
+    price: 2.50,
+    image: "https://images.unsplash.com/photo-1560023907-5f339617ea30",
+    category: "refrescos",
+    variants: [
+      {
+        name: "Tipo",
+        options: ["Con gas", "Sin gas"],
+      },
+    ],
+  },
+  {
+    id: "9",
+    name: "Café Espresso",
+    description: "Café espresso italiano",
+    price: 2.00,
+    image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04",
+    category: "cafes",
+    variants: [
+      {
+        name: "Extras",
+        options: ["Normal", "Doble", "Con leche"],
+      },
+    ],
+  },
+  {
+    id: "10",
+    name: "Cappuccino",
+    description: "Café con leche espumosa y cacao",
+    price: 3.50,
+    image: "https://images.unsplash.com/photo-1534778101976-62847782c00e",
+    category: "cafes",
+  },
 ];
 
 export interface Establishment {
